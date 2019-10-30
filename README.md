@@ -1,6 +1,6 @@
-# Linux-Command-Line
+# Linux Command Line
 
-## Bash Shell Command \& Scripting
+## Bash Shell Command & Scripting
 
 ### Shell
 
@@ -25,7 +25,7 @@ Command are instruction that are written in the terminal and submitted to the sh
 
 - `wget https://ftp.gnu.org/gnu/coreutils/coreutils-8.28.tar.xz`
 - `tar -xvJf coreutils-8.28.tar.xz`
-- `cd coreutils-8.28/` 
+- `cd coreutils-8.28/`
 - `bash configure` # configure compuler and create Makefile
 - `make` # compilation probably
 - `sudo make install` install the software
@@ -113,18 +113,19 @@ Nano configuration file location: /etc/nanorc
 
 cron \- daemon to execute scheduled commands (Vixie Cron)
 Each user gets a cron tab that lists which commands or scripts will be automatically run by the user
+
 1. `crontab -e` # edit crontab of current user
 2. format: `m h  dom mon dow   command`
 <minute[0-59]> <br /> <hour[0-23]> <br /> <day_of_the_month[1-31]> <br /> <month[[1-12][JAN-DEC]]> <br /> <day_of_the_week[[0-6][SUN-SAT]]>  <br />
 
    `20 11 * * * <command>` means it will run at 11:20AM every day,month, year
    `20 11  10 JUN SUN <command>` this command will run at 11:20AM of JUN only if 10th JUN is Sunday  <br />
-   \*  \* means any minute any day <br /> 
+   \*  \* means any minute any day <br/>
    `* *  * * * <command>` # the command will run every minute every hour  <br />
    `0,15,30,45  * * * * echo "Hello23"` # evry 15 minutes run this command <br />
    `*/15  \* \3 \* \* echo "Hello23"` # evry 3 days every 15 minutes run this command <br />
    `59 23 * JAN,DEC * echo Hello`  # run the command only on JAN and DEC each day at 23:59 <br />
-**Note: adding to environment variable $PATH won't let cron command know the command. **    <br />
+**Note: adding to environment variable $PATH won't let cron command know the command.**    <br />
 
    `59 23 * * FRI bash ~/bin/script`  # run the script file named  /home/<user_name>/script <br />
   
@@ -133,7 +134,7 @@ Each user gets a cron tab that lists which commands or scripts will be automatic
 - Note: aliases can't be used for scheduling
 aliases are mainly used as shorter form of the original longer command
 steps:
-- create a `.bash_aliases` file in home 
+- create a `.bash_aliases` file in home
 - alias aliasName="<long_command>" i.e `alias getPythonVersion="python --version"`
 - save the file
 - restart terminal
@@ -154,9 +155,9 @@ steps:
 ### Archiving file
 
 1. Make tarball from the files using `tar` command
-2. Compress tarball using `gzip` or `bzip2` 
+2. Compress tarball using `gzip` or `bzip2`
 
-## Commands
+## Command
 
 ### tty
 
@@ -184,7 +185,7 @@ grep command is canse\-sensitive <br />
 
 ### man
 
-search for specific keyword: `man -k "your keyword here"` 
+search for specific keyword: `man -k "your keyword here"`
 
 `man -k "list directory contents"`
 
@@ -325,7 +326,7 @@ sort - sort lines of text files <br />
 oprtions:
 
 - \-n, \-\-numeric\-sort compare according to string numerical value
-- \-M, \-\-month\-sort 
+- \-M, \-\-month\-sort
 - \-r, \-\-reverse reverse the result of comparisons
 - \-h, \-\-human-numeric-sort compare human readable numbers (e.g., 2K 1G)
 **Note: -M and -n options can't be used together**
@@ -334,7 +335,7 @@ oprtions:
 `sort -r file.txt` # sorts the content of file.txt in reverse alphabetical way <br />
 `sort -n numbers.txt` # sort based on value of the numbers <br />
 `sort -u numbers.txt` # sort and outputs only unique <br />
-`ls -l | head -n 20 | sort -k 5 -n ` # sorts files based on size  <br />
+`ls -l | head -n 20 | sort -k 5 -n` # sorts files based on size  <br />
 `ls -lh | head -n 20 | sort -k 5  -hr` # human readable format sort
 `ls -lh /etc | head -n 20 | sort -k 6 -M` # sort by month
 
@@ -382,12 +383,13 @@ find - search for files in a directory hierarchy <br />
 
 tar - an archiving utility <br />
 options: <br />
-- \-c, \-\-create Create  a  new  archive. 
+
+- \-c, \-\-create Create  a  new  archive.
 - \-v, \-\-verbose Verbosely list files processed.
 - \-f lets tar command accept files
-- \-t List  the  contents of an archive. 
+- \-t List  the  contents of an archive.
 `tar -cvf ourArchive.tar file[1-3].txt` # create a new archive named ourArchive.tar <br />
-`tar -tf ourArchive.tar ` # outputs contents of ourArchive.tar <br />
+`tar -tf ourArchive.tar` # outputs contents of ourArchive.tar <br />
 `tar -xvf ourArchice.tar` # extracts ourArchive.tar <br />
 `tar -cvzf ourArchive.tar.gz diary.txt utshaw.txt diary.txt` # create gzip file in one command <br />
  `tar -cvjf ourArchive.tar.bz2 diary.txt utshaw.txt diary.txt` # create bz2 file in one command <br />
@@ -410,7 +412,7 @@ bzip2 is slower but has higher compression power can compress to very small file
 ### zip
 
 zip \- package and compress (archive) files <br />
-`zip ourZip.zip file1.txt file2.txt ` # creates zip file named ourZip.zip from file1.txt and file2.txt <br />
+`zip ourZip.zip file1.txt file2.txt` # creates zip file named ourZip.zip from file1.txt and file2.txt <br />
 
 ### wc
 
@@ -439,7 +441,7 @@ The main uses for Regular Expressions (REs) are text searches and string manipul
 - `'[:digit:]'` - Digits; same as [0-9]
 - `'[:punct:]'` - Punctuation characters
 
-### Example
+### Example for regex
 
 The following regex will match all words end with ing:
 
@@ -490,7 +492,7 @@ sed is a **stream editor**. A stream editor is used to perform basic text transf
 
 [All about sed command](https://www.computerhope.com/unix/used.htm)
 
-### Example
+### Example for sed
 
 Input:
 ```
