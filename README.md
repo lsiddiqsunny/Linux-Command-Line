@@ -23,7 +23,7 @@ Command are instruction that are written in the terminal and submitted to the sh
 
 ### Installing free software (for example: coreutils)
 
-- `wget https://ftp.gnu.org/gnu/coreutils/coreutils-8.28.tar.xz` 
+- `wget https://ftp.gnu.org/gnu/coreutils/coreutils-8.28.tar.xz`
 - `tar -xvJf coreutils-8.28.tar.xz`
 - `cd coreutils-8.28/` 
 - `bash configure` # configure compuler and create Makefile
@@ -322,8 +322,9 @@ cp [OPTION]... SOURCE... DIRECTORY <br />
 ### sort
 
 sort - sort lines of text files <br />
-oprtions: <br />
-- \-n, \-\-numeric\-sort compare according to string numerical value 
+oprtions:
+
+- \-n, \-\-numeric\-sort compare according to string numerical value
 - \-M, \-\-month\-sort 
 - \-r, \-\-reverse reverse the result of comparisons
 - \-h, \-\-human-numeric-sort compare human readable numbers (e.g., 2K 1G)
@@ -337,7 +338,7 @@ oprtions: <br />
 `ls -lh | head -n 20 | sort -k 5  -hr` # human readable format sort
 `ls -lh /etc | head -n 20 | sort -k 6 -M` # sort by month
 
-### mv 
+### mv
 
 mv - move (rename) files <br />
 `mv oldName.txt newName.txt` # renames to newName.txt <br />
@@ -415,6 +416,153 @@ zip \- package and compress (archive) files <br />
 
 wc - print newline, word, and byte counts for each file <br />
 `wc -l`  # outputs number of lines the command received in the standard input <br />
+
+## Regex
+
+The main uses for Regular Expressions (REs) are text searches and string manipulation. An RE matches a single character or a set of characters -- a string or a part of a string.
+
+### Regex metacharacters
+
+- `'.'` (dot) - Matches any single character except the newline character (\n).
+- `'*'` (star) - Matches zero or more occurrence of the immediately preceding character.
+- `'<'` - Matches the beginning of a word
+- `'>'` - Matches the ending of a word
+- `'^'` - Matches the beginning of a line
+- `'$'` - Matches the end of a line
+- `'{m}'` - Matches the exactly regex ‘m’
+- `'{m,}'` - Matches the at least regex ‘m’
+- `'{m,n}'` - Matches the preceding regex ‘m’ to ‘n’ times
+
+### Regex Metaclasses
+
+- `'[:alnum:]'` - Alphanumeric characters; same as [a-zA-Z0-9]
+- `'[:digit:]'` - Digits; same as [0-9]
+- `'[:punct:]'` - Punctuation characters
+
+### Example
+
+The following regex will match all words end with ing:
+
+```
+<.*ing\>
+```
+
+The following regex will match all words which contain quu or quuu and such expression:
+
+```
+qu{2,}
+```
+
+Input:
+
+```
+domineering
+joke
+unite
+meeting
+test
+improve
+provide
+tease
+duck
+truthful
+striped
+glamorous
+```
+
+Match all words starting with non-vowel and end with a vowel (Usage with grep).
+
+```
+cat lite.txt | grep "^[^aeiou].*[aeiou]$"
+```
+
+Output:
+
+```
+joke
+provide
+tease
+```
+
+## sed
+
+sed is a **stream editor**. A stream editor is used to perform basic text transformations on an input stream (a file, or input from a pipeline). While in some ways similar to an editor which permits scripted edits (such as ed), sed works by making only one pass over the input(s), and is consequently more efficient. But it is sed's ability to filter text in a pipeline which particularly distinguishes it from other types of editors.
+
+[All about sed command](https://www.computerhope.com/unix/used.htm)
+
+### Example
+
+Input:
+```
+cat
+caat
+caaat
+caaaat
+caaaaat
+```
+
+Replace consecutive multiple a with single a
+```
+sed 's/a\{2,\}/a/g' cats.txt
+```
+
+Output:
+
+```
+cat
+cat
+cat
+cat
+cat
+```
+
+[More example](https://www.geeksforgeeks.org/sed-command-in-linux-unix-with-examples/)
+
+## awk
+
+Awk is a scripting language used for manipulating data and generating reports.The awk command programming language requires no compiling, and allows the user to use variables, numeric functions, string functions, and logical operators.
+
+WHAT CAN WE DO WITH AWK ?
+
+**1. AWK Operations:**
+(a) Scans a file line by line
+(b) Splits each input line into fields
+(c) Compares input line/fields to pattern
+(d) Performs action(s) on matched lines
+
+**2. Useful For:**
+(a) Transform data files
+(b) Produce formatted reports
+
+**3. Programming Constructs:**
+(a) Format output lines
+(b) Arithmetic and string operations
+(c) Conditionals and loops
+
+[Example](https://www.geeksforgeeks.org/awk-command-unixlinux-examples/)
+
+## Functions
+
+Functions are a small chunk of code which you may call multiple times within your script. They are particularly useful if you have certain tasks which need to be performed several times.
+
+Bash function:
+```
+greet() {
+    echo Hello $1
+}
+```
+
+Invoking the function:
+```
+greet A
+greet B
+```
+
+Output:
+```
+Hello A
+Hello B
+```
 
 ## Resources
 
